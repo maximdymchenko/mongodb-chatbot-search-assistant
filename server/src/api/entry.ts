@@ -13,7 +13,7 @@ entryRouter.post("/", async (req: Request, res: Response) => {
     manager.load(modelPath);
 
     const response = await manager.process("en", query);
-    console.log("nlp response=", response);
+    // console.log("nlp entry response=", response);
     return res.json(response.intent);
   } catch (error) {
     let errorMessage: string | null = null;
