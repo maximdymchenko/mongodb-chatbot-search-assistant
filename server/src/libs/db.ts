@@ -17,6 +17,10 @@ const client = new MongoClient(MONGODB_CONNECTION_URI);
 const database = client.db(MONGODB_DATABASE_NAME);
 const collection = database.collection(MONGODB_EMBEDDED_COLLECTION_NAME);
 
+export async function addEmbedding(property: any) {
+  return await collection.insertOne(property);
+}
+
 export async function search(query: string) {
   console.time("embedding");
   const queryEmbedding = await getEmbedding().embedQuery(query);
@@ -49,8 +53,4 @@ export async function search(query: string) {
     console.log("Error in vector search");
     return [];
   }
-}
-
-export async function addEmbedding(property: any) {
-  return await collection.insertOne(property);
 }

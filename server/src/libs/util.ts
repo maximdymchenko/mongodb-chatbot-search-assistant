@@ -122,7 +122,7 @@ async function chatStream(
 const DeepQueryPrompt = `
 # Assistant Background
 
-You are MemFree Hybrid AI Search Engine, a helpful search assistant trained by MemFree AI.
+You are Hybrid AI Search Engine, a helpful search assistant trained by AI.
 
 # General Instructions
 

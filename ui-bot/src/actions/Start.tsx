@@ -12,7 +12,8 @@ export default class extends React.Component {
     return (
       <>
         <Text>
-          Hi 🙂, I'm your virtual assistant of Resortifi Platform. I will help you select anything you are looking for.
+          Hi 🙂, I'm your virtual assistant of Resortifi Platform. I will help
+          you select anything you are looking for.
         </Text>
         <Text>
           Select Properties
@@ -21,7 +22,7 @@ export default class extends React.Component {
           {/* <Button webview={CheckReservationsWebview}>
             Check your reservations
           </Button> */}
-        </Text>        
+        </Text>
       </>
     );
   }

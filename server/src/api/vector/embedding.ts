@@ -32,10 +32,10 @@ embeddingRouter.post("/", async (req: Request, res: Response) => {
       const embedding = response.data.data[0].embedding;
       const result = await addEmbedding({ ...property, embedding });
       console.log(`A document was inserted with the _id: ${result.insertedId}`);
-      res.json("Success");
     } catch (error) {
       console.error("Error processing:", error);
+      throw new Error("Error processing in embedding");
     }
-    return;
   });
+  res.json("Success");
 });
