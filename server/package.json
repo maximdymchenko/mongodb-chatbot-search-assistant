@@ -14,7 +14,8 @@
     "lint:fix": "biome check src/ --fix",
     "format": "biome format src/",
     "test": "vitest run",
-    "prepare": "husky"
+    "prepare": "husky",
+    "train:nlp": "node src/train/nlp.ts"
   },
   "dependencies": {
     "@langchain/openai": "^0.2.5",
@@ -28,6 +29,7 @@
     "helmet": "^7.1.0",
     "http-status-codes": "^2.3.0",
     "mongodb": "^6.8.0",
+    "node-nlp": "^4.27.0",
     "openai": "^4.54.0",
     "pino-http": "^10.0.0"
   },

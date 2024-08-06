@@ -25,7 +25,7 @@ export default class extends React.Component {
         <Text>Please tell me which city you want to live in.</Text>
         <Flex>
           {cities.map((city, index) => (
-            <Button key={index} payload="pick-location">
+            <Button key={index} payload="specific-budget">
               {city.name}
             </Button>
           ))}

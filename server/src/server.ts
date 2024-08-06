@@ -7,9 +7,10 @@ import authCheck from "@/middleware/authHandler";
 import rateLimiter from "@/middleware/rateLimiter";
 import requestLogger from "@/middleware/requestLogger";
 import errorHandler from "@/middleware/errorHandler";
-import { searchRouter } from "@/api/vector/search";
 import { embeddingRouter } from "@/api/vector/embedding";
+import { entryRouter } from "@/api/entry";
 import { externalSearchRouter } from "@/api/external-search";
+import { searchRouter } from "@/api/vector/search";
 import { CORS_ORIGIN } from "./config";
 
 const logger = pino({ name: "server start" });
@@ -30,6 +31,7 @@ app.use(rateLimiter);
 app.use(requestLogger);
 
 // Routes
+app.use("/api/entry", entryRouter);
 app.use("/api/vector/search", searchRouter);
 app.use("/api/vector/embedding", embeddingRouter);
 app.use("/api/external-search", externalSearchRouter);

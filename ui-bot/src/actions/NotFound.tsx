@@ -7,10 +7,8 @@ export default class extends React.Component {
   render() {
     return (
       <>
-        <Text>I'm sorry! I don't understand you!</Text>
         <Text>
-          I'm just a bot expecting to be a human one day 😅 Could you please
-          repeat that again?
+          I'm sorry! 😴 I don't understand you! Could you please ask me again?
         </Text>
       </>
     );
