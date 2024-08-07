@@ -346,6 +346,41 @@ function botonicNodeConfig(mode) {
   }
 }
 
+function botonicSelfHostedConfig(mode) {
+  return {
+    optimization: optimizationConfig,
+    mode: mode,
+    devtool: sourceMap(mode),
+    target: 'web',
+    entry: path.resolve('webpack-entries', 'self-hosted-entry.js'),
+    module: {
+      rules: [
+        babelTypescriptLoaderConfig,
+        fileLoaderConfig(path.join('..', ASSETS_DIRNAME)),
+        stylesLoaderConfig,
+      ],
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'webchat.botonic.js',
+      library: 'Botonic',
+      libraryTarget: 'umd',
+      libraryExport: 'app',
+      publicPath: './',
+    },
+    resolve: resolveConfig,
+    plugins: [
+      imageminPlugin,
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        IS_BROWSER: true,
+        HUBTYPE_API_URL: null,
+        BOTONIC_TARGET: BOTONIC_TARGETS.DEV,
+      }),
+    ],
+  }
+}
+
 module.exports = function (env, argv) {
   if (env.target === BOTONIC_TARGETS.ALL) {
     return [
@@ -361,6 +396,8 @@ module.exports = function (env, argv) {
     return [botonicWebviewsConfig(argv.mode)]
   } else if (env.target === BOTONIC_TARGETS.WEBCHAT) {
     return [botonicWebchatConfig(argv.mode)]
+  } else if (env.target === 'self-hosted') {
+    return [botonicSelfHostedConfig(argv.mode)]
   } else {
     return null
   }
